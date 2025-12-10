@@ -1,13 +1,17 @@
-class Solution(object):
-    def merge(self, nums1, m, nums2, n):
-        """
-        :type nums1: List[int]
-        :type m: int
-        :type nums2: List[int]
-        :type n: int
-        :rtype: None Do not return anything, modify nums1 in-place instead.
-        """
-        for i in range(n):
-            nums1[m+i] = nums2[i]
-        nums1.sort()
-        return nums1
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        mi = m-1
+        ni = n-1
+        p = (m+n) - 1
+
+        while ni >= 0:
+            if mi>= 0 and nums1[mi] > nums2[ni]:
+                nums1[p] = nums1[mi]
+                mi -= 1
+
+            else:
+                nums1[p] = nums2[ni]
+                ni -= 1
+
+            p -= 1
+      
